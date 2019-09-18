@@ -28,25 +28,30 @@
       ```      
  - 인증 토큰 재발급
     - ```
-      GET /devices
+      GET /auth/
+      Header Authorization: Bearer Token      
       ```
  - 각 년도별로 인터넷뱅킹을 가장 많이 이용하는 접속기기를 출력하
     - ```
       GET /utilizations/getHighestDevice
+      Header Authorization: Bearer Token
       ```
  - 특정 년도를 입력받아 그 해에 인터넷뱅킹에 가장 많이 접속하는 기기
     - ```
       GET /utilizations/getHighestDevice/{year}
+      Header Authorization: Bearer Token
       Params year: 년도
       ```
  - 디바이스 아이디를 입력받아 인터넷뱅킹에 접속 비율이 가장 많은 해를 출력
     - ```
       GET /utilizations/getHighestRate/{deviceId}`
+      Header Authorization: Bearer Token
       Params deviceId: 디바이스 아이디
       ```
  - 인터넷뱅킹 접속 기기 ID 를 입력받아 2019 년도 인터넷뱅킹 접속 비율을 예측
     - ```
       POST /utilizations/predictRate
+      Header Authorization: Bearer Token
       Body {"device_id": 1}
       ```
 
