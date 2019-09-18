@@ -12,6 +12,8 @@
     - expire: 3600
 - 비밀번호 암호화
    - sha256
+- 예측 알고리즘 
+   - [linear regression](https://en.wikipedia.org/wiki/Linear_regression)
    
 ### API 명세서
  - 인터넷뱅킹 서비스 접속 기기 목록을 출력
