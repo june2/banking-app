@@ -6,7 +6,13 @@
 ### 문제해결 전략
 - ERD
 ![image](https://user-images.githubusercontent.com/5827617/65154570-b2a22180-da66-11e9-8fe2-f538fb54437e.png)
-
+- API 인증
+  - JWT 
+    - 서명: secretKey
+    - expire: 3600
+- 비밀번호 암호화
+   - sha256
+   
 ### API 명세서
  - 인터넷뱅킹 서비스 접속 기기 목록을 출력
     - ```
