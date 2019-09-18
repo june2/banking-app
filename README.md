@@ -6,7 +6,8 @@
 ### 문제해결 전략
 - ERD
 ![image](https://user-images.githubusercontent.com/5827617/65154570-b2a22180-da66-11e9-8fe2-f538fb54437e.png)
-- API 명세서
+
+### API 명세서
  - 인터넷뱅킹 서비스 접속 기기 목록을 출력
     - ```
       GET /devices
