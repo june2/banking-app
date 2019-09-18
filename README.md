@@ -16,7 +16,17 @@
    - [linear regression](https://en.wikipedia.org/wiki/Linear_regression)
    
 ### API 명세서
- - 인터넷뱅킹 서비스 접속 기기 목록을 출력
+ - 회원가입
+    - ```
+      POST /auth/login
+      Body { "email": "string", "password": "string" }
+      ```
+ - 회원 로그인
+    - ```
+      POST /auth/login
+      Body { "email": "string", "password": "string" }
+      ```      
+ - 인증 토큰 재발급
     - ```
       GET /devices
       ```
