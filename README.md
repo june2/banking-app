@@ -16,10 +16,10 @@
  - 디바이스 아이디를 입력받아 인터넷뱅킹에 접속 비율이 가장 많은 해를 출력
     - `GET /utilizations/getHighestRate/{deviceId}`
  - 인터넷뱅킹 접속 기기 ID 를 입력받아 2019 년도 인터넷뱅킹 접속 비율을 예측
-    - ```
-       POST /utilizations/predictRate
-       Body {"device_id": 1}
-      ```
+    -```
+      POST /utilizations/predictRate
+      Body {"device_id": 1}
+     ```
 
 
 ### 개발 프레임워크 
