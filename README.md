@@ -28,7 +28,7 @@
       ```      
  - 인증 토큰 재발급
     - ```
-      GET /auth/
+      GET /auth/refresh
       Header Authorization: Bearer Token      
       ```
  - 각 년도별로 인터넷뱅킹을 가장 많이 이용하는 접속기기를 출력하
