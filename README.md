@@ -30,12 +30,12 @@
 ### API 명세서
  - 회원가입
     - ```
-      POST /auth/login
+      POST /auth/signUp
       Body { "email": "string", "password": "string" }
       ```
  - 회원 로그인
     - ```
-      POST /users
+      POST /auth/login
       Body { "email": "string", "password": "string" }
       ```      
  - 인증 토큰 재발급
@@ -43,7 +43,12 @@
       GET /auth/refresh
       Header Authorization: Bearer refreshToken      
       ```
- - 각 년도별로 인터넷뱅킹을 가장 많이 이용하는 접속기기를 출력하
+ - 인터넷뱅킹 서비스 접속 기기 목록을 출력
+       - ```
+      GET /devices
+      Header Authorization: Bearer accessToken      
+      ```
+ - 각 년도별로 인터넷뱅킹을 가장 많이 이용하는 접속기기를 출력
     - ```
       GET /utilizations/getHighestDevice
       Header Authorization: Bearer accessToken
