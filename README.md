@@ -19,6 +19,8 @@
           "refreshToken": accessToken 재발급 용도
        }
       ```
+    - refreshToken 서버에서 관리
+    - token black list 관리 (accessToken즉각파기 용도)
 - 비밀번호 암호화
    - sha256
 - 예측 알고리즘 
