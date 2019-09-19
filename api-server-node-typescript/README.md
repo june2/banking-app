@@ -14,25 +14,19 @@
 
 ```
 .
-├── /config/                    # Config 폴더
-│   ├── config.json	            # 서버 config
-│   └── datasources.json	      # DB config
-├── /db/                        # DB model 폴더
-│   ├── /migrations/	          # DB tables 정의
-│   ├── /models/                # DB model 정의 
-│   ├── /seeders/               # DB model seed 데이터 정의
+├── /docker/                    # docker 폴더 (mysql docker-compose)
+├── /files/                     # csv 파일 폴더
 │   └── memoryDb.sqlite         # sqllite file
-├── /server/                    # server 폴더
+├── /src/                       # server 폴더
 │   ├── /api/	                  # api 폴더
-│   ├── /components/            # componets 폴더
-│   ├── /constants/             # constants 폴더
-│   ├── /middlewares/           # middeware 폴더
-│   └── app.js	                # The main JavaScript file (entry point)
-├── /spec/                      # swagger 정의
+│   ├── /common/                # middeware 폴더
+│   ├── app.module.ts           # module
+│   └── main.ts	                # entry point
 ├── /test/                      # Unit and integration tests
-├── .babelrc                    # babel config file
-├── .sequelizerc                # sequelize conig file
+├── .env                        # envierment configure
+├── nodemon.json                # nodemon configure
 │── package.json                # Dev dependencies and NPM scripts
+├── tsconfig.json               # ts configure
 └── README.md                   # Project overview
 ```
 
