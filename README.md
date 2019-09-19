@@ -44,7 +44,7 @@
       Header Authorization: Bearer refreshToken      
       ```
  - 인터넷뱅킹 서비스 접속 기기 목록을 출력
-       - ```
+    - ```
       GET /devices
       Header Authorization: Bearer accessToken      
       ```
