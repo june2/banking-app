@@ -8,9 +8,12 @@ import { ConfigService } from '../../src/common/config/config.service';
 import { UserModule } from '../../src/api/user/user.module';
 import { User } from '../../src/api/user/user.entity';
 import { UserService } from '../../src/api/user/user.service';
+import { UserRepository } from '../../src/api/user/user.repository';
 import { DeviceModule } from '../../src/api/device/device.module';
 import { Device } from '../../src/api/device/device.entity';
 import { DeviceService } from '../../src/api/device/device.service';
+import { AuthModule } from '../../src/api/auth/auth.module';
+import { AuthService } from '../../src/api/auth/auth.service';
 
 describe('Devices', () => {
 
@@ -35,28 +38,23 @@ describe('Devices', () => {
           synchronize: true
         }),
         TypeOrmModule.forFeature([Device]),
-        DeviceModule,        
+        DeviceModule,
+        UserModule,
+        AuthModule
       ]
     })
       .compile();
 
     app = moduleFixture.createNestApplication();
     await app.init();
+    // const userRepository: UserRepository = app.get(UserRepository);
+    // userRepository.create({ email: 'test@test.com', password: '1234' });
   });
 
   it(`GET /devices 200`, async () => {
     let { status, body } = await request(app.getHttpServer())
       .get('/devices')
-      .set('Authorization', `Bearer ${token}`);    
-    expect(status).toBe(200);    
-  });
-
-  afterAll(async () => {
-    await getConnection()
-      .createQueryBuilder()
-      .delete()
-      .from(User)
-      .execute();
-    await app.close();
+      .set('Authorization', `Bearer ${token}`);
+    expect(status).toBe(200);
   });
 });

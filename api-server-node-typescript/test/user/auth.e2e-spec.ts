@@ -47,7 +47,7 @@ describe('Users', () => {
   it(`POST /users 201`, async () => {
     let { status, body } = await request(app.getHttpServer())
       .post('/users')
-      .send({ email: 'test@test.com', password: '12345', name: 'test' });
+      .send({ email: 'test100@test.com', password: '12345', name: 'test' });
     expect(status).toBe(201);
     expect(body.id).toBeDefined();
   });
@@ -55,11 +55,11 @@ describe('Users', () => {
   it(`POST /auth/login 201`, async () => {
     let { status, body } = await request(app.getHttpServer())
       .post('/auth/login')
-      .send({ email: 'test@test.com', password: '12345' });
+      .send({ email: 'test100@test.com', password: '12345' });
     expect(status).toBe(201);
     expect(body.expiresIn).toBeDefined();
     expect(body.accessToken).toBeDefined();
-    token = body.accessToken;    
+    token = body.accessToken;
   });
 
   it(`POST /auth/login 401`, async () => {
@@ -73,7 +73,6 @@ describe('Users', () => {
     let { status, body } = await request(app.getHttpServer())
       .get('/users/me')
       .set('Authorization', `Bearer ${token}`);
-    console.log(status, body);
     // expect(status).toBe(401);
   });
 

@@ -3,13 +3,14 @@ import {
   ApiBearerAuth,
   ApiResponse,
   ApiUseTags,
+  ApiOperation,
 } from '@nestjs/swagger';
-import { Controller, Get, Post, UseGuards, Body, Req, UnauthorizedException } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { Controller, Get, Post, Body, Req, UnauthorizedException, BadRequestException } from '@nestjs/common';
 import { ExtractJwt } from 'passport-jwt';
 import { AuthService } from './auth.service';
 import { UserService } from './../user/user.service';
 import { AuthLoginDto } from './auth.dto';
+import { CreateUserDto, ResponseUserDto } from './../user/user.dto';
 import { refreshTokenList } from './jwt.list';
 
 
@@ -21,6 +22,20 @@ export class AuthController {
     private readonly authService: AuthService,
     private readonly userService: UserService,
   ) { }
+
+  @Post('/signUp')
+  @ApiOperation({ title: 'Create user' })
+  @ApiResponse({ status: 201, description: 'The record has been successfully created.' })
+  @ApiResponse({ status: 403, description: 'Forbidden.' })
+  create(@Body() createUserDto: CreateUserDto): Promise<ResponseUserDto> {
+    return this.userService.create(createUserDto).then(user => {
+      return this.authService.createToken(user).then(jwt => {
+        return new ResponseUserDto(user, jwt);
+      });
+    }).catch(res => {
+      throw new BadRequestException('Duplicated email')
+    });
+  }
 
   @Post('/login')
   @ApiResponse({ status: 201, description: 'Successful Login' })

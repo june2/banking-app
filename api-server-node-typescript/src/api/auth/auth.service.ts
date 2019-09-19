@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './jwt-payload.interface';
+import { JwtDto } from './auth.dto';
 import { User } from './../user/user.entity';
 import { UserService } from './../user/user.service';
 import { refreshTokenList } from './jwt.list'
@@ -13,14 +14,11 @@ export class AuthService {
     private readonly userService: UserService
   ) { }
 
-  async createToken(user: User) {
+  async createToken(user: User): Promise<JwtDto>{
     let refreshToken = randomBytes(64).toString('hex');
     refreshTokenList.push(refreshToken);
-    return {
-      expiresIn: 3600,
-      accessToken: this.jwtService.sign(Object.assign({}, user)),
-      refreshToken: refreshToken
-    };
+    new JwtDto(3600, this.jwtService.sign(Object.assign({}, user)), refreshToken);
+    return new JwtDto(3600, this.jwtService.sign(Object.assign({}, user)), refreshToken);
   }
 
   async validateUser(payload: JwtPayload): Promise<User> {

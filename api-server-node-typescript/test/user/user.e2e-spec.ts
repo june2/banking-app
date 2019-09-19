@@ -50,14 +50,6 @@ describe('Users', () => {
       .expect(userService.findAll());
   });
 
-  it(`POST /users`, () => {
-    return request(app.getHttpServer())
-      .post('/users')
-      .send({ name: 'test' })
-      .expect(201)
-      .expect(userService.create());
-  });
-
   afterAll(async () => {
     await app.close();
   });

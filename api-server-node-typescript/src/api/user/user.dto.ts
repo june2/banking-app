@@ -1,6 +1,7 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 import { IsInt, IsString, IsBoolean, IsOptional, IsEmail } from 'class-validator';
 import { User } from './user.entity';
+import { JwtDto } from './../auth/auth.dto';
 
 export class CreateUserDto {
   @ApiModelProperty()
@@ -25,10 +26,11 @@ export class UpdateUserDto {
 }
 
 export class ResponseUserDto {
-  constructor(user: User) {
+  constructor(user: User, jwt: JwtDto) {
     this.id = user.id;
     this.email = user.email;
     this.name = user.name;
+    this.jwt = jwt;
   }
 
   @ApiModelProperty()
@@ -43,4 +45,7 @@ export class ResponseUserDto {
   @IsString()
   @IsOptional()
   name: string;
+
+  @IsOptional()
+  jwt: JwtDto;
 }
