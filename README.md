@@ -43,7 +43,7 @@
       GET /auth/refresh
       Header Authorization: Bearer refreshToken      
       ```
- - 각 년도별로 인터넷뱅킹을 가장 많이 이용하는 접속기기를 출력하
+ - 각 년도별로 인터넷뱅킹을 가장 많이 이용하는 접속기기를 출력
     - ```
       GET /utilizations/getHighestDevice
       Header Authorization: Bearer accessToken
