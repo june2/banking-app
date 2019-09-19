@@ -23,6 +23,9 @@
    - sha256
 - 예측 알고리즘 
    - [linear regression](https://en.wikipedia.org/wiki/Linear_regression)
+- 성능을 고려하여 10000 TPS 이상의 요청을 받을 수 있는 아키텍처에 대해서 고민
+   - redis, memcached 활용
+   - load balancer 활용 (scale out)
    
 ### API 명세서
  - 회원가입
