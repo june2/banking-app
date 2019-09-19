@@ -5,13 +5,20 @@
 
 ### 문제해결 전략
 - DB 
-  - MYSQL (docker-compose 사용, 로컬 ) 
+  - MYSQL (docker-compose 사용, 로컬개발용도) 
 - ERD
 ![image](https://user-images.githubusercontent.com/5827617/65154570-b2a22180-da66-11e9-8fe2-f538fb54437e.png)
 - API 인증
   - JWT 
     - 서명: secretKey
     - expire: 3600
+    - ```
+       {
+          "expiresIn": accessToken 유효기간,
+          "accessToken": API 접근 
+          "refreshToken": accessToken 재발급 용도
+       }
+      ```
 - 비밀번호 암호화
    - sha256
 - 예측 알고리즘 
