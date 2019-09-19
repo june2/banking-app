@@ -8,18 +8,15 @@ import { ConfigService } from '../../src/common/config/config.service';
 import { UserModule } from '../../src/api/user/user.module';
 import { User } from '../../src/api/user/user.entity';
 import { ResponseUserDto } from '../../src/api/user/user.dto';
-import { DeviceModule } from '../../src/api/device/device.module';
-import { Device } from '../../src/api/device/device.entity';
-import { DeviceService } from '../../src/api/device/device.service';
+import { UtilizationModule } from '../../src/api/utilization/utilization.module';
+import { Utilization } from '../../src/api/utilization/utilization.entity';
 import { AuthModule } from '../../src/api/auth/auth.module';
-import { AuthService } from '../../src/api/auth/auth.service';
 
-describe('Devices', () => {
+describe('Utilization', () => {
 
   let app: INestApplication;
   const config: ConfigService = new ConfigService();
 
-  let device: Device;
   let user: ResponseUserDto;
 
   beforeAll(async () => {
@@ -36,10 +33,10 @@ describe('Devices', () => {
           entities: [join(process.env.PWD, 'src/**/**.entity{.ts,.js}')],
           synchronize: true
         }),
-        TypeOrmModule.forFeature([Device]),
-        DeviceModule,
+        TypeOrmModule.forFeature([Utilization]),
         UserModule,
-        AuthModule
+        AuthModule,
+        UtilizationModule,
       ]
     })
       .compile();
@@ -52,11 +49,33 @@ describe('Devices', () => {
     user = body;
   });
 
-  it(`GET /devices 200 (인터넷뱅킹 서비스 접속 기기 목록을 출력)`, async () => {
+  it(`GET /getHighestDevice 200 (각 년도별로 인터넷뱅킹을 가장 많이 이용하는 접속기기를 출력)`, async () => {
     let { status, body } = await request(app.getHttpServer())
-      .get('/devices')
+      .get('/utilizations/getHighestDevice')
       .set('Authorization', `Bearer ${user.jwt.accessToken}`);
     expect(status).toBe(200);
+  });
+
+  it(`GET /getHighestDevice 200 (특정 년도를 입력받아 그 해에 인터넷뱅킹에 가장 많이 접속하는 기기)`, async () => {
+    let { status, body } = await request(app.getHttpServer())
+      .get('/utilizations/getHighestDevice/2011')
+      .set('Authorization', `Bearer ${user.jwt.accessToken}`);
+    expect(status).toBe(200);
+  });
+
+  it(`GET /getHighestRate 200 (디바이스 아이디를 입력받아 인터넷뱅킹에 접속 비율이 가장 많은 해를 출력)`, async () => {
+    let { status, body } = await request(app.getHttpServer())
+      .get('/utilizations/getHighestRate/1')
+      .set('Authorization', `Bearer ${user.jwt.accessToken}`);
+    expect(status).toBe(200);
+  });
+
+  it(`POST /predictRate 201 (인터넷뱅킹 접속 기기 ID 를 입력받아 2019 년도 인터넷뱅킹 접속 비율을 예측)`, async () => {
+    let { status, body } = await request(app.getHttpServer())
+      .post('/utilizations/predictRate')
+      .set('Authorization', `Bearer ${user.jwt.accessToken}`)
+      .send({ device_id: 1 });
+    expect(status).toBe(201);
   });
 
   afterAll(async () => {

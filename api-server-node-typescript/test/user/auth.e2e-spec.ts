@@ -44,15 +44,15 @@ describe('Users', () => {
     await app.init();
   });
 
-  it(`POST /users 201`, async () => {
+  it(`POST /auth/signUp 201 (회원가입)`, async () => {
     let { status, body } = await request(app.getHttpServer())
-      .post('/users')
+      .post('/auth/signUp')
       .send({ email: 'test100@test.com', password: '12345', name: 'test' });
     expect(status).toBe(201);
     expect(body.id).toBeDefined();
   });
 
-  it(`POST /auth/login 201`, async () => {
+  it(`POST /auth/login 201 (로그인)`, async () => {
     let { status, body } = await request(app.getHttpServer())
       .post('/auth/login')
       .send({ email: 'test100@test.com', password: '12345' });
@@ -62,14 +62,14 @@ describe('Users', () => {
     token = body.accessToken;
   });
 
-  it(`POST /auth/login 401`, async () => {
+  it(`POST /auth/login 401 (로그인 실패 잘못된 계정)`, async () => {
     let { status, body } = await request(app.getHttpServer())
       .post('/auth/login')
       .send({ email: 'test1@test.com', password: '12345' });
     expect(status).toBe(401);
   });
 
-  it(`GET /users/me 200`, async () => {
+  it(`GET /users/me 200 (자기 정보 조회)`, async () => {
     let { status, body } = await request(app.getHttpServer())
       .get('/users/me')
       .set('Authorization', `Bearer ${token}`);
