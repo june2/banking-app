@@ -32,7 +32,7 @@
       ```
  - 회원 로그인
     - ```
-      POST /auth/login
+      POST /users
       Body { "email": "string", "password": "string" }
       ```      
  - 인증 토큰 재발급
