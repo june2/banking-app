@@ -70,4 +70,8 @@
 
 ### 개발 프레임워크 
 - [Node](https://github.com/june2/banking-app/blob/master/api-server-node-typescript/README.md#banking-app-node-server-rest-api)
+  - typescript
+  - nest.js framework 
+  - fs 모듈 활용, 앱구동시 csv파일 db에 적재
+  - [빌드 및 실행 방법](https://github.com/june2/banking-app/tree/master/api-server-node-typescript#commands)
 - Java
