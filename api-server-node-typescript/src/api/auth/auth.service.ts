@@ -3,7 +3,8 @@ import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './jwt-payload.interface';
 import { User } from './../user/user.entity';
 import { UserService } from './../user/user.service';
-import { identifier } from '@babel/types';
+import { refreshTokenList } from './jwt.list'
+import { randomBytes } from 'crypto';
 
 @Injectable()
 export class AuthService {
@@ -13,9 +14,12 @@ export class AuthService {
   ) { }
 
   async createToken(user: User) {
+    let refreshToken = randomBytes(64).toString('hex');
+    refreshTokenList.push(refreshToken);
     return {
       expiresIn: 3600,
-      accessToken: this.jwtService.sign(Object.assign({}, user))
+      accessToken: this.jwtService.sign(Object.assign({}, user)),
+      refreshToken: refreshToken
     };
   }
 

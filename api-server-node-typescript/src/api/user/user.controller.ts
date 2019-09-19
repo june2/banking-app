@@ -4,12 +4,12 @@ import {
   ApiResponse,
   ApiUseTags,
 } from '@nestjs/swagger';
-import { Controller, Param, Body, Get, Post, Put, Req, UseGuards } from '@nestjs/common';
+import { Controller, Param, Body, Get, Post, Put, Req, UseGuards, BadRequestException } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UpdateResult } from 'typeorm';
 import { UserService } from './user.service';
 import { User } from './user.entity';
-import { CreateUserDto, UpdateUserDto } from './user.dto';
+import { CreateUserDto, UpdateUserDto, ResponseUserDto } from './user.dto';
 
 @ApiBearerAuth()
 @ApiUseTags('User')
@@ -35,8 +35,12 @@ export class UserController {
   @ApiOperation({ title: 'Create user' })
   @ApiResponse({ status: 201, description: 'The record has been successfully created.' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
-  create(@Body() createUserDto: CreateUserDto): Promise<User> {
-    return this.userService.create(createUserDto);
+  create(@Body() createUserDto: CreateUserDto): Promise<ResponseUserDto> {
+    return this.userService.create(createUserDto).then(user => {
+      return new ResponseUserDto(user);
+    }).catch(res => {      
+      throw new BadRequestException('Duplicated email')
+    });
   }
 
   @Put('/:id')
