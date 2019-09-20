@@ -39,8 +39,7 @@ export class BankingService {
         } else {
           temp.forEach((data, i) => {
             if (i > 1) {
-              let device = new Device();
-              device.device_id = i - 1;
+              let device = new Device((i - 1), null);
               rate.push({
                 device: device,
                 year: parseInt(temp[0]),
@@ -55,7 +54,7 @@ export class BankingService {
       this.utilizationRepository.clear().then(res => {
         this.deviceRepository.delete({}).then(res => {
           // save
-          this.deviceRepository.save(devices).then(res => {            
+          this.deviceRepository.save(devices).then(res => {
             this.utilizationRepository.save(rate);
           });
         });
