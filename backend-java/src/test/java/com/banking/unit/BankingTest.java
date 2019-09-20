@@ -1,6 +1,6 @@
 package com.banking.unit;
 
-import com.banking.api.common.Banking;
+import com.banking.common.Banking;
 import org.junit.Test;
 
 
