@@ -25,6 +25,6 @@ public class Utilization implements Serializable {
 	private float rate;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "deviceId", nullable=false)
+	@JoinColumn(name = "deviceId")
 	private Device device;
 }

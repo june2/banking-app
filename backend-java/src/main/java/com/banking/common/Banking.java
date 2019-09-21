@@ -31,8 +31,8 @@ public class Banking {
     @Bean
     public void init() {
         try {
-            clearData();
-            loadCSV(System.getProperty("user.dir") + "/src/main/files/data.csv");
+//            clearData();
+//            loadCSV(System.getProperty("user.dir") + "/src/main/files/data.csv");
         } catch (Exception e) {
             e.printStackTrace();
         }
