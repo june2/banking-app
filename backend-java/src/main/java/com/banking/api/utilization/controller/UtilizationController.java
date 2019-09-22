@@ -5,6 +5,7 @@ import com.banking.api.utilization.dto.DevicesResponse;
 import com.banking.api.utilization.dto.UtilizationDTO;
 import com.banking.api.utilization.dto.UtilizationResponse;
 import com.banking.api.utilization.service.UtilizationService;
+import com.banking.exception.ResourceNotFoundException;
 import com.banking.handler.ResponseHandler;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -15,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 @Api(tags = {"Utilization"})
 @Slf4j
@@ -43,7 +46,9 @@ public class UtilizationController {
     })
     @RequestMapping("/getHighestDevice/:year")
     public UtilizationResponse findHighestDeviceByYear(@RequestParam long year) {
-        return UtilizationResponse.builder().result(utilizationService.findHighestDeviceByYear(year)).build();
+        return Optional.ofNullable(utilizationService.findHighestDeviceByYear(year)).map(res -> {
+            return UtilizationResponse.builder().result(res).build();
+        }).orElseThrow(() -> new ResourceNotFoundException("Rate", "year", year));
     }
 
     @ApiOperation(value = "Get Highest Device", notes = "Get Highest Device", response = UtilizationDTO.class, httpMethod = "GET")
@@ -52,7 +57,9 @@ public class UtilizationController {
     })
     @RequestMapping("/getHighestRate/:deviceId")
     public UtilizationResponse findHighestRateByDeviceId(@RequestParam long deviceId) {
-        return UtilizationResponse.builder().result(utilizationService.findHighestRateByDeviceId(deviceId)).build();
+        return Optional.ofNullable(utilizationService.findHighestRateByDeviceId(deviceId)).map(res -> {
+            return UtilizationResponse.builder().result(res).build();
+        }).orElseThrow(() -> new ResourceNotFoundException("Device", "deviceId", deviceId));
     }
 
     @ApiOperation(value = "Get Highest Device", notes = "Get Highest Device", response = UtilizationDTO.class, httpMethod = "GET")

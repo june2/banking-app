@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import lombok.*;
 
+import java.math.BigInteger;
+
 @ApiModel(value = "Utilization info", description = "Utilization info")
 @Getter
 @Setter
@@ -13,7 +15,7 @@ import lombok.*;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UtilizationResultDTO {
     private String device_name;
-    private Integer device_id;
-    private Integer year;
+    private BigInteger device_id;
+    private BigInteger year;
     private Float rate;
 }
