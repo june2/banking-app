@@ -4,6 +4,9 @@
 - 인터넷뱅킹 이용 현황 정보 제공 REST API
 
 ### 문제해결 전략
+- 데이터 파일
+  - 앱 구동시, csv파일 로딩 후 db에 적재
+  - 추후 csv파일 데이터량이 방대해질 경우 대비, batch 업로드 
 - DB 
   - MYSQL (docker-compose 사용, 로컬개발용도) 
 - ERD
@@ -79,8 +82,24 @@
 - [Node](https://github.com/june2/banking-app/tree/master/api-server-node-typescript)
   - typescript
   - nest.js framework 
-  - fs 모듈 활용, 앱구동시 csv파일 db에 적재
   - [빌드 및 실행 방법](https://github.com/june2/banking-app/tree/master/api-server-node-typescript#commands)
+  - 기능 구현 범위
+    - [x]  REST API 구축
+    - [x]  앱구동시 csv파일 db에 적재 (fs 모듈 활용)
+    - [x]  swagger
+    - [x]  unit test
+    - [x]  2019년 예측 api
+    - [x]  JWT 인증 구현
+    - [x]  회원가입 / 로그인    
 - [Java](https://github.com/june2/banking-app/tree/master/backend-java)
   - java8
   - spring boot
+  - [빌드 및 실행 방법](https://github.com/june2/banking-app/tree/master/backend-java#commands)
+    - 기능 구현 범위
+    - [x]  REST API 구축
+    - [x]  앱구동시 csv파일 db에 적재
+    - [x]  swagger
+    - [x]  unit test
+    - [ ]  2019년 예측 api
+    - [ ]  JWT 인증 구현
+    - [ ]  회원가입 / 로그인    
