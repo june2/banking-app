@@ -95,7 +95,7 @@
   - java8
   - spring boot
   - [빌드 및 실행 방법](https://github.com/june2/banking-app/tree/master/backend-java#commands)
-    - 기능 구현 범위
+  - 기능 구현 범위
     - [x]  REST API 구축
     - [x]  앱구동시 csv파일 db에 적재
     - [x]  swagger
