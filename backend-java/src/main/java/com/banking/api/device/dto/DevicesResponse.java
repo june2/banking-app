@@ -1,5 +1,6 @@
-package com.banking.api.utilization.dto;
+package com.banking.api.device.dto;
 
+import com.banking.api.device.model.Device;
 import io.swagger.annotations.ApiModel;
 import lombok.*;
 
@@ -14,5 +15,5 @@ import java.util.List;
 @NoArgsConstructor()
 @AllArgsConstructor()
 public class DevicesResponse implements Serializable {
-    private List<UtilizationResultDTO> devices;
+    private List<Device> devices;
 }

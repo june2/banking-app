@@ -1,6 +1,6 @@
 package com.banking;
 
-import com.banking.handler.ResponseHandler;
+import com.banking.api.utilization.dto.DevicesResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +14,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class BankingTest {
+public class UtilizationTest {
 
-	@Autowired
-	private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
-	@Test
-	public void shouldGetRooms() {
-		ResponseEntity<ResponseHandler> response = restTemplate.getForEntity("/api/rooms", ResponseHandler.class);
-		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    @Test
+    public void shouldGetResultSize8() {
+        ResponseEntity<DevicesResponse> response = restTemplate.getForEntity("/api/utilizations/getHighestDevice", DevicesResponse.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
-		ResponseHandler handler = response.getBody();
-		assertThat(handler.getStatus()).isEqualTo("success");
-	}
-
+        DevicesResponse result = response.getBody();
+        assertThat(result.getDevices().size()).isEqualTo(8);
+    }
 }
