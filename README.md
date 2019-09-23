@@ -102,11 +102,11 @@
   - gradle
   - [빌드 및 실행 방법](https://github.com/june2/banking-app/tree/master/backend-java#commands)
   - 기능 구현 범위
-    - [x]  REST API 구축
+    - [x]  [REST API 구축](https://github.com/june2/banking-app/blob/master/backend-java/src/main/java/com/banking/api)
     - [x]  [앱구동시 csv파일 db에 적재](https://github.com/june2/banking-app/blob/master/backend-java/src/main/java/com/banking/common/Banking.java)
-    - [x]  swagger
-    - [x]  unit test
+    - [x]  [swagger](https://github.com/june2/banking-app/blob/master/backend-java/src/main/java/com/banking/config/SwaggerConfig.java)
+    - [x]  [unit test](https://github.com/june2/banking-app/tree/master/backend-java/src/test)
     - [ ]  2019년 예측 api
-    - [x]  JWT 인증 구현
+    - [x]  [JWT 인증 구현](https://github.com/june2/banking-app/blob/master/backend-java/src/main/java/com/banking/jwt)
     - [ ]  token fresh
-    - [x]  회원가입 / 로그인    
+    - [x]  [회원가입 / 로그인](https://github.com/june2/banking-app/blob/master/backend-java/src/main/java/com/banking/api/auth)
