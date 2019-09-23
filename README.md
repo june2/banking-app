@@ -87,6 +87,7 @@
 - [Node](https://github.com/june2/banking-app/tree/master/api-server-node-typescript)
   - typescript
   - nest.js framework 
+  - typeOrm
   - passport
   - [빌드 및 실행 방법](https://github.com/june2/banking-app/tree/master/api-server-node-typescript#commands)
   - 기능 구현 범위
