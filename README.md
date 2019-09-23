@@ -83,6 +83,7 @@
 - [Node](https://github.com/june2/banking-app/tree/master/api-server-node-typescript)
   - typescript
   - nest.js framework 
+  - passport
   - [빌드 및 실행 방법](https://github.com/june2/banking-app/tree/master/api-server-node-typescript#commands)
   - 기능 구현 범위
     - [x]  REST API 구축
@@ -96,6 +97,9 @@
 - [Java](https://github.com/june2/banking-app/tree/master/backend-java)
   - java8
   - spring boot
+  - jpa
+  - spring boot security
+  - gradle
   - [빌드 및 실행 방법](https://github.com/june2/banking-app/tree/master/backend-java#commands)
   - 기능 구현 범위
     - [x]  REST API 구축
