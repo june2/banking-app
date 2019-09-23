@@ -13,8 +13,8 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -36,10 +36,10 @@ public class UtilizationController {
 
     @ApiOperation(value = "Get Highest Device", notes = "Get Highest Device", response = UtilizationDTO.class, httpMethod = "GET")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "year", value = "year", dataType = "long", required = true),
+            @ApiImplicitParam(name = "year", value = "year", dataType = "long", paramType = "path",  required = true),
     })
-    @RequestMapping("/getHighestDevice/:year")
-    public UtilizationResponse findHighestDeviceByYear(@RequestParam long year) {
+    @RequestMapping("/getHighestDevice/{year}")
+    public UtilizationResponse findHighestDeviceByYear(@PathVariable(value = "year")  long year) {
         return Optional.ofNullable(utilizationService.findHighestDeviceByYear(year)).map(res -> {
             return UtilizationResponse.builder().result(res).build();
         }).orElseThrow(() -> new ResourceNotFoundException("Rate", "year", year));
@@ -47,18 +47,19 @@ public class UtilizationController {
 
     @ApiOperation(value = "Get Highest Device", notes = "Get Highest Device", response = UtilizationDTO.class, httpMethod = "GET")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "deviceId", value = "deviceId", dataType = "long", required = true),
+            @ApiImplicitParam(name = "deviceId", value = "deviceId", dataType = "long", paramType = "path", required = true),
     })
-    @RequestMapping("/getHighestRate/:deviceId")
-    public UtilizationResponse findHighestRateByDeviceId(@RequestParam long deviceId) {
+    @RequestMapping("/getHighestRate/{deviceId}")
+    public UtilizationResponse findHighestRateByDeviceId(@PathVariable(value = "deviceId") long deviceId) {
         return Optional.ofNullable(utilizationService.findHighestRateByDeviceId(deviceId)).map(res -> {
             return UtilizationResponse.builder().result(res).build();
         }).orElseThrow(() -> new ResourceNotFoundException("Device", "deviceId", deviceId));
     }
 
-    @ApiOperation(value = "Get Highest Device", notes = "Get Highest Device", response = UtilizationDTO.class, httpMethod = "GET")
+    @ApiOperation(value = "Predict Rate", notes = "Predict Rate", response = UtilizationDTO.class, httpMethod = "GET")
     @RequestMapping("/predictRate")
     public ResponseHandler predictRateByDeviceId() {
+        //TODO: add linear regression algorithm
         return new ResponseHandler("success", utilizationService.findAll());
     }
 }

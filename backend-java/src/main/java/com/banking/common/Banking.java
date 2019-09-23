@@ -5,6 +5,7 @@ import com.banking.api.device.service.DeviceService;
 import com.banking.api.utilization.model.Utilization;
 import com.banking.api.utilization.service.UtilizationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,11 @@ import java.io.FileReader;
 @Configuration
 public class Banking {
 
-    private int batchSize = 20;
+    @Value("${banking.csv.isReset}")
+    private boolean isReset;
+
+    @Value("${banking.csv.batchSize}")
+    private int batchSize;
 
     @PersistenceContext
     private EntityManager em;
@@ -31,8 +36,10 @@ public class Banking {
     @Bean
     public void init() {
         try {
-//            clearData();
-//            loadCSV(System.getProperty("user.dir") + "/src/main/files/data.csv");
+            if (isReset) {
+                clearData();
+                loadCSV(System.getProperty("user.dir") + "/src/main/files/data.csv");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

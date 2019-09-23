@@ -4,14 +4,18 @@ import com.google.common.collect.Lists;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.ApiKey;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.sql.Timestamp;
+
+import static java.util.Collections.singletonList;
 
 @Configuration
 @EnableSwagger2
@@ -32,6 +36,14 @@ public class SwaggerConfig {
                                 .title("Banking app API")
                                 .build())
                 .securitySchemes(Lists.newArrayList(apiKey()))
+                .globalOperationParameters(singletonList(
+                        new ParameterBuilder()
+                                .name("Authorization")
+                                .modelRef(new ModelRef("string"))
+                                .parameterType("header")
+                                .required(false)
+                                .hidden(true)
+                                .build()))
                 .useDefaultResponseMessages(false).directModelSubstitute(Timestamp.class, Long.class);
     }
 

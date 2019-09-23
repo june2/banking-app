@@ -5,7 +5,6 @@ import com.banking.exception.JwtAuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -20,7 +19,7 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
     }
 
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+    public Authentication authenticate(Authentication authentication) {
         User user = jwtService.verify((String) authentication.getCredentials());
         return Optional.ofNullable(user).map(res -> {
             return new JwtAuthenticatedProfile(res);

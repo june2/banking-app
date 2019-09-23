@@ -50,7 +50,7 @@ public class JwtService {
                     .parseClaimsJws(token)
                     .getBody();
             return User.builder().email(claims.getSubject()).build();
-        } catch (Error e) {
+        } catch (Exception e) {
             return null;
         }
     }
