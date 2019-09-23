@@ -4,6 +4,10 @@
 - 인터넷뱅킹 이용 현황 정보 제공 REST API
 
 ### 문제해결 전략
+- 사용 언어 
+  - node와 java 사용하여 같은 기능을 두가지 방식으로 구현
+    - node (nestjs-typescript)
+    - java (spring)
 - 데이터 파일
   - 앱 구동시, csv파일 로딩 후 db에 적재
   - 추후 csv파일 데이터량이 방대해질 경우 대비, batch 업로드 
