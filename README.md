@@ -91,6 +91,7 @@
     - [x]  unit test
     - [x]  2019년 예측 api
     - [x]  JWT 인증 구현
+    - [x]  token fresh
     - [x]  회원가입 / 로그인    
 - [Java](https://github.com/june2/banking-app/tree/master/backend-java)
   - java8
@@ -102,5 +103,6 @@
     - [x]  swagger
     - [x]  unit test
     - [ ]  2019년 예측 api
-    - [ ]  JWT 인증 구현
-    - [ ]  회원가입 / 로그인    
+    - [x]  JWT 인증 구현
+    - [ ]  token fresh
+    - [x]  회원가입 / 로그인    
