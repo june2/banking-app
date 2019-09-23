@@ -37,7 +37,11 @@
 $ yarn                                # Install modules
 $ yarn build                          # Build ts files
 $ yarn start:dev                      # Run development mode
-$ yarn start:prod                     # Run production mode
+$ yarn start:prod                     # Run production modes
+```
+### Swagger
+```
+http://localhost:9000/api/
 ```
 
 ### Test
