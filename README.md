@@ -7,6 +7,7 @@
 - 데이터 파일
   - 앱 구동시, csv파일 로딩 후 db에 적재
   - 추후 csv파일 데이터량이 방대해질 경우 대비, batch 업로드 
+  - propertise에 boolean 값을 입력하여 앱 구동시, csv 데이터 migration작업 호출 여부 
 - DB 
   - MYSQL (docker-compose 사용, 로컬개발용도) 
 - ERD
