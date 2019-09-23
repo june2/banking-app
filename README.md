@@ -86,14 +86,14 @@
   - passport
   - [빌드 및 실행 방법](https://github.com/june2/banking-app/tree/master/api-server-node-typescript#commands)
   - 기능 구현 범위
-    - [x]  REST API 구축
-    - [x]  앱구동시 csv파일 db에 적재 (fs 모듈 활용)
-    - [x]  swagger
-    - [x]  unit test
-    - [x]  2019년 예측 api
-    - [x]  JWT 인증 구현
-    - [x]  token fresh
-    - [x]  회원가입 / 로그인    
+    - [x]  [REST API 구축](https://github.com/june2/banking-app/tree/master/api-server-node-typescript/src/api)
+    - [x]  [앱구동시 csv파일 db에 적재 (fs 모듈 활용)](https://github.com/june2/banking-app/tree/master/api-server-node-typescript/src/common/banking)
+    - [x]  [swagger](https://github.com/june2/banking-app/blob/master/api-server-node-typescript/src/main.ts)
+    - [x]  [unit test](https://github.com/june2/banking-app/tree/master/api-server-node-typescript/test)
+    - [x]  [2019년 예측 api](https://github.com/june2/banking-app/blob/9ba12f549a893d0071f6d23b2a2431bce8c36b39/api-server-node-typescript/src/api/utilization/utilization.controller.ts#L60-L70)
+    - [x]  [JWT 인증 구현](https://github.com/june2/banking-app/blob/master/api-server-node-typescript/src/api/auth)
+    - [x]  [token refresh](https://github.com/june2/banking-app/blob/9ba12f549a893d0071f6d23b2a2431bce8c36b39/api-server-node-typescript/src/api/auth/auth.controller.ts#L55-L66)
+    - [x]  [회원가입 / 로그인](https://github.com/june2/banking-app/blob/master/api-server-node-typescript/src/api/auth)    
 - [Java](https://github.com/june2/banking-app/tree/master/backend-java)
   - java8
   - spring boot
@@ -108,5 +108,5 @@
     - [x]  [unit test](https://github.com/june2/banking-app/tree/master/backend-java/src/test)
     - [ ]  2019년 예측 api
     - [x]  [JWT 인증 구현](https://github.com/june2/banking-app/blob/master/backend-java/src/main/java/com/banking/jwt)
-    - [ ]  token fresh
+    - [ ]  token refresh
     - [x]  [회원가입 / 로그인](https://github.com/june2/banking-app/blob/master/backend-java/src/main/java/com/banking/api/auth)
