@@ -103,7 +103,7 @@
   - [빌드 및 실행 방법](https://github.com/june2/banking-app/tree/master/backend-java#commands)
   - 기능 구현 범위
     - [x]  REST API 구축
-    - [x]  앱구동시 csv파일 db에 적재
+    - [x]  앱구동시 csv파일 db에 적재 : https://github.com/june2/banking-app/blob/master/backend-java/src/main/java/com/banking/common/Banking.java
     - [x]  swagger
     - [x]  unit test
     - [ ]  2019년 예측 api
