@@ -1,6 +1,9 @@
 
 package com.banking.handler;
 
+import lombok.Builder;
+
+@Builder
 public class ResponseHandler{	
 	private String status ;
 	private Object data;

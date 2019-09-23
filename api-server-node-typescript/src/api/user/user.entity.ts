@@ -10,12 +10,12 @@ export class User {
   @Column()
   @Index({ unique: true })
   email: string;
-  
+
   @Exclude()
   @Column({ select: false, readonly: true })
   password: string;
 
-  @Column()
+  @Column({ nullable: true })
   name: string;
 
   @BeforeInsert()

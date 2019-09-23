@@ -43,7 +43,7 @@ export class AuthController {
   @ApiResponse({ status: 401, description: 'Unauthorized' })
   async login(@Body() authLoginDto: AuthLoginDto): Promise<any> {
     const user = await this.userService.findByEmailAndPass(
-      authLoginDto.email,
+      authLoginDto.email,      
       crypto.createHmac('sha256', authLoginDto.password).digest('hex')
     );
     if (!user) {

@@ -28,12 +28,6 @@ public class UtilizationController {
     @Autowired
     private UtilizationService utilizationService;
 
-    @ApiOperation(value = "Find All Utilizationㄴ", notes = "Find All Utilizations", response = UtilizationDTO.class, httpMethod = "GET")
-    @RequestMapping("/")
-    public ResponseHandler findAll() {
-        return new ResponseHandler("success", utilizationService.findAll());
-    }
-
     @ApiOperation(value = "/Get Highest Device", notes = "Get Highest Device", response = UtilizationDTO.class, httpMethod = "GET")
     @RequestMapping("/getHighestDevice")
     public DevicesResponse findHighestDeviceByEachYear() {
